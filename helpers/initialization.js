@@ -8,9 +8,10 @@ const IUniswapV2Factory = require("@uniswap/v2-core/build/IUniswapV2Factory.json
 let provider
 
 if (config.PROJECT_SETTINGS.isLocal) {
-  provider = new hre.ethers.WebSocketProvider(`ws://127.0.0.1:8545/`)
+    provider = new hre.ethers.WebSocketProvider(`ws://127.0.0.1:8545/`)
 } else {
-  provider = new hre.ethers.WebSocketProvider(`wss://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`)
+    // provider = new hre.ethers.WebSocketProvider(`wss://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`)
+    provider = new hre.ethers.WebSocketProvider(`wss://bsc-dataseed4.ninicoin.io/`)
 }
 
 // -- SETUP UNISWAP/SUSHISWAP CONTRACTS -- //
@@ -23,10 +24,10 @@ const IArbitrage = require('../artifacts/contracts/Arbitrage.sol/Arbitrage.json'
 const arbitrage = new hre.ethers.Contract(config.PROJECT_SETTINGS.ARBITRAGE_ADDRESS, IArbitrage.abi, provider)
 
 module.exports = {
-  provider,
-  uFactory,
-  uRouter,
-  sFactory,
-  sRouter,
-  arbitrage
+    provider,
+    uFactory,
+    uRouter,
+    sFactory,
+    sRouter,
+    arbitrage
 }

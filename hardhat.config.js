@@ -10,7 +10,17 @@ module.exports = {
     hardhat: {
       forking: {
         url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-      }
-    }
+      },
+    },
+     bsc: {
+      url: "https://bsc-dataseed.binance.org/", // BSC node URL
+      chainId: 56, // BSC chain ID
+      accounts: [privateKey],
+    },
+     mainnet: {
+      url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
+      accounts: [privateKey],
+    },
   }
 };
+
